@@ -13,7 +13,8 @@ public class Triangle implements GeometricObject {
      * @throws RuntimeException loi
      */
     public Triangle(Point p1, Point p2, Point p3) throws RuntimeException {
-        if (p1.equals(p2) || p2.equals(p3) || p3.equals(p1) || isStraight(p1, p2, p3)) {
+        if (p1.distance(p2) == 0 || p2.distance(p3) == 0
+                || p3.distance(p1) == 0 || isStraight(p1, p2, p3)) {
             throw new RuntimeException();
         }
         this.p1 = p1;
@@ -70,7 +71,7 @@ public class Triangle implements GeometricObject {
      */
     @Override
     public String getInfo() {
-        return String.format("Triangle[(%.2f,%.2f),(%.2f,%.2f),(%.2f,%.2f)]",p1.getPointX(),
+        return String.format("Triangle[(%.2f,%.2f),(%.2f,%.2f),(%.2f,%.2f)]", p1.getPointX(),
                 p1.getPointY(), p2.getPointX(), p2.getPointY(), p3.getPointX(), p3.getPointY());
     }
 }
